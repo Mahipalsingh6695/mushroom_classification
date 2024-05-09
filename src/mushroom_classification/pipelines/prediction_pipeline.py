@@ -30,35 +30,35 @@ class PredictPipeline:
 
 class CustomData:
     def __init__(self,
-                 class:,
-                 cap-shape:
-                 cap-surface:
-                 cap-color:
-                 bruises:
-                 odor:
-                 gill-attachment:
-                 gill-spacing:
-                 gill-size:
-                 gill-color:
-                 stalk-shape:
-                 stalk-roots:
-                 talk-surface-above-ring:
-                 stalk-surface-below-rings:
-                 talk-color-above-ring:
-                 stalk-color-below-ring:
-                 veil-type:
-                 veil-color:
-                 ring-number:
-                 ring-type:
-                 spore-print-color:
-                 population:
-                 habitat):
+                 class:int,
+                 cap-shape:int,
+                 cap-surface:int,
+                 cap-color:int,
+                 bruises:int,
+                 odor:int,
+                 gill-attachment:int,
+                 gill-spacing:int,
+                 gill-size:int,
+                 gill-color:int,
+                 stalk-shape:int,
+                 stalk-roots:int,
+                 talk-surface-above-ring:int,
+                 stalk-surface-below-rings:int,
+                 talk-color-above-ring:int,
+                 stalk-color-below-ring:int,
+                 veil-type:int,
+                 veil-color:int,
+                 ring-number:int,
+                 ring-type:int,
+                 spore-print-color:int,
+                 population:int,
+                 habitat:int):
         
         self.class=class
         self.cap-shape=cap-shape
         self.cap-surface=cap-surface
         self.cap-color=cap-color
-        self.bruises=bruise
+        self.bruises=bruises
         self.odor=odor
         self.gill-attachment=gill-attachment
         self.gill-spacing=gill-spacing
@@ -83,29 +83,29 @@ class CustomData:
             try:
                 custom_data_input_dict = {
                     'carat':[self.carat],
-                    'class' :[self.class],
-                    'cap-shape' :[self.cap-shape],
-                    'cap-surface' :[self.cap-surface],
-                    'cap-color' :[self.cap-color],
-                    'bruises' :[self.bruises],
-                    'odor' :[self.odor],
-                    'gill-attachment' :[self.gill-attachment],
-                    'gill-spacing' :[self.gill-spacing],
-                    'gill-size' :[self.gill-size],
-                    'gill-color' :[self.gill-color],
-                    'stalk-shape' :[self.stalk-shape],
-                    'stalk-roots' :[self.stalk-roots],
-                    'talk-surface-above-ring' :[self.talk-surface-above-ring],
-                    'stalk-surface-below-rings' :[self.stalk-surface-below-rings],
-                    'talk-color-above-ring' :[self.talk-color-above-ring],
-                    'stalk-color-below-ring' :[self.stalk-color-below-ring],
-                    'veil-type' :[self.veil-type],
-                    'veil-color' :[self.veil-color], 
-                    'ring-numbe' :[self.ring-number],
-                    'ring-type' :[self.ring-type],
-                    'spore-print-color' :[self.spore-print-color],
-                    'population' :[self.population],
-                    'habita' :[self.habitat] 
+                    'class':[self.class],
+                    'cap-shape':[self.cap-shape],
+                    'cap-surface':[self.cap-surface],
+                    'cap-color':[self.cap-color],
+                    'bruises':[self.bruises],
+                    'odor':[self.odor],
+                    'gill-attachment':[self.gill-attachment],
+                    'gill-spacing':[self.gill-spacing],
+                    'gill-size':[self.gill-size],
+                    'gill-color':[self.gill-color],
+                    'stalk-shape':[self.stalk-shape],
+                    'stalk-roots':[self.stalk-roots],
+                    'talk-surface-above-ring':[self.talk-surface-above-ring],
+                    'stalk-surface-below-rings':[self.stalk-surface-below-rings],
+                    'talk-color-above-ring':[self.talk-color-above-ring],
+                    'stalk-color-below-ring':[self.stalk-color-below-ring],
+                    'veil-type':[self.veil-type],
+                    'veil-color':[self.veil-color], 
+                    'ring-numbe':[self.ring-number],
+                    'ring-type':[self.ring-type],
+                    'spore-print-color':[self.spore-print-color],
+                    'population':[self.population],
+                    'habita':[self.habitat] 
                 }
                 df = pd.DataFrame(custom_data_input_dict)
                 logging.info('Dataframe Gathered')
