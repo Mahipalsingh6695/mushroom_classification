@@ -9,7 +9,7 @@ from src.mushroom_classification.exception import customexception
 from src.mushroom_classification.logger import logging
 
 from sklearn.compose import ColumnTransformer
-from sklearn.impute import SimpleImputer
+# from sklearn.impute import SimpleImputer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import LabelEncoder
 
@@ -32,16 +32,16 @@ class DataTransformation:
             logging.info('Data Transformation initiated')
             
             # Define which columns should be ordinal-encoded and which should be scaled
-            numerical_cols = ['LIMIT_BAL', 'SEX','EDUCATION', 'MARRIAGE','AGE', 'PAY_0', 'PAY_2','PAY_3', 'PAY_4','PAY_5', 'PAY_6','BILL_AMT1', 'BILL_AMT2','BILL_AMT3', 'BILL_AMT4','BILL_AMT5', 'BILL_AMT6','PAY_AMT1', 'PAY_AMT2','PAY_AMT3', 'PAY_AMT4','PAY_AMT5', 'PAY_AMT6']
+            new_column = ['cap-shape', 'cap-surface', 'cap-color', 'bruises', 'odor','gill-attachment', 'gill-spacing', 'gill-size', 'gill-color','stalk-shape', 'stalk-root', 'stalk-surface-above-ring','stalk-surface-below-ring', 'stalk-color-above-ring','stalk-color-below-ring', 'veil-type', 'veil-color', 'ring-number','ring-type', 'spore-print-color', 'population', 'habitat']
             
             
             logging.info('Pipeline Initiated')
             
             ## Numerical Pipeline
-            num_pipeline=Pipeline(
+            new_pipeline=Pipeline(
                 steps=[
-                ('imputer',SimpleImputer(strategy='median')),
-                ('scaler',StandardScaler())
+                ('Encoder',LabelEncoder()),
+                # ('scaler',StandardScaler())
 
                 ]
 
@@ -50,7 +50,7 @@ class DataTransformation:
            
             
             preprocessor=ColumnTransformer([
-            ('num_pipeline',num_pipeline,numerical_cols)
+            ('new_pipeline',new_pipeline,new_column)
             ])
             
             return preprocessor
@@ -76,8 +76,8 @@ class DataTransformation:
             
             preprocessing_obj = self.get_data_transformation()
             
-            target_column_name = 'default.payment.next.month'
-            drop_columns = [target_column_name,'ID']
+            target_column_name = 'class'
+            drop_columns = [target_column_name]
             
             input_feature_train_df = train_df.drop(columns=drop_columns,axis=1)
             target_feature_train_df=train_df[target_column_name]

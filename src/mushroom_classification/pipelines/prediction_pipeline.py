@@ -30,31 +30,31 @@ class PredictPipeline:
 
 class CustomData:
     def __init__(self,
-                 class:int,
-                 cap-shape:int,
-                 cap-surface:int,
-                 cap-color:int,
-                 bruises:int,
-                 odor:int,
-                 gill-attachment:int,
-                 gill-spacing:int,
-                 gill-size:int,
-                 gill-color:int,
-                 stalk-shape:int,
-                 stalk-roots:int,
-                 talk-surface-above-ring:int,
-                 stalk-surface-below-rings:int,
-                 talk-color-above-ring:int,
-                 stalk-color-below-ring:int,
-                 veil-type:int,
-                 veil-color:int,
-                 ring-number:int,
-                 ring-type:int,
-                 spore-print-color:int,
-                 population:int,
-                 habitat:int):
+                 cap-shape:str,
+                 cap-surface:str,
+                 cap-color:str,
+                 bruises:str,
+                 odor:str,
+                 gill-attachment:str,
+                 gill-spacing:str,
+                 gill-size:str,
+                 gill-color:str,
+                 stalk-shape:str,
+                 stalk-roots:str,
+                 talk-surface-above-ring:str,
+                 stalk-surface-below-rings:str,
+                 talk-color-above-ring:str,
+                 stalk-color-below-ring:str,
+                 veil-type:str,
+                 veil-color:str,
+                 ring-number:str,
+                 ring-type:str,
+                 spore-print-color:str,
+                 population:str,
+                 habitat:str):
         
-        self.class=class
+        
+        
         self.cap-shape=cap-shape
         self.cap-surface=cap-surface
         self.cap-color=cap-color
@@ -82,8 +82,6 @@ class CustomData:
     def get_data_as_dataframe(self):
             try:
                 custom_data_input_dict = {
-                    'carat':[self.carat],
-                    'class':[self.class],
                     'cap-shape':[self.cap-shape],
                     'cap-surface':[self.cap-surface],
                     'cap-color':[self.cap-color],
