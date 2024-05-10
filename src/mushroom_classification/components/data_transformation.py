@@ -27,38 +27,34 @@ class DataTransformation:
         
     
     def get_data_transformation(self):
-        
+
+
         try:
             logging.info('Data Transformation initiated')
             
             # Define which columns should be ordinal-encoded and which should be scaled
-            new_column = ['cap-shape', 'cap-surface', 'cap-color', 'bruises', 'odor','gill-attachment', 'gill-spacing', 'gill-size', 'gill-color','stalk-shape', 'stalk-root', 'stalk-surface-above-ring','stalk-surface-below-ring', 'stalk-color-above-ring','stalk-color-below-ring', 'veil-type', 'veil-color', 'ring-number','ring-type', 'spore-print-color', 'population', 'habitat']
-            
+            categorical_features = ['cap-shape', 'cap-surface', 'cap-color', 'bruises', 'odor','gill-attachment', 'gill-spacing', 'gill-size', 'gill-color','stalk-shape', 'stalk-root', 'stalk-surface-above-ring','stalk-surface-below-ring', 'stalk-color-above-ring','stalk-color-below-ring', 'veil-type', 'veil-color', 'ring-number','ring-type', 'spore-print-color', 'population', 'habitat']
             
             logging.info('Pipeline Initiated')
             
             ## Numerical Pipeline
-            new_pipeline=Pipeline(
-                steps=[
-                ('Encoder',LabelEncoder()),
-                # ('scaler',StandardScaler())
-
-                ]
-
-            )
+            categorical_pipeline = Pipeline(
+            steps=[
+                ('encoder', LabelEncoder())  # Using OneHotEncoder to encode categorical features
+            ]
+            )  
             
+            ## Combine the pipelines using ColumnTransformer
+            preprocessor = ColumnTransformer(
+                transformers=[
+                    ('categorical_pipeline', categorical_pipeline, categorical_features)# Replace 'categorical_features' with your categorical feature names
+                # You may add more pipelines for numerical features if needed
+            ] # Pass through any columns not specified for transformation
+            )
+
+            return preprocessor
            
             
-            preprocessor=ColumnTransformer([
-            ('new_pipeline',new_pipeline,new_column)
-            ])
-            
-            return preprocessor
-            
-
-            
-            
-        
         except Exception as e:
             logging.info("Exception occured in the initiate_datatransformation")
 
@@ -102,6 +98,7 @@ class DataTransformation:
             logging.info("preprocessing pickle file saved")
             
             return (
+                
                 train_arr,
                 test_arr
             )
